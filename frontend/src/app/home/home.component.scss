@@ -1,0 +1,55 @@
+.logo {
+  width: 100px;
+}
+
+q {
+  font-style: italic;
+  font-size: 1.2rem;
+  quotes: "« " " »";
+}
+
+.uploadDiv {
+  padding-top: 2em;
+  max-width: 70%;
+  height: 10em;
+  margin: 0 auto;
+  background-color: lightgray;
+
+  outline: 2px dashed black;
+  outline-offset: -10px;
+}
+
+.onDrop {
+  background-color: white;
+}
+
+.deliveries {
+  padding-top: 1rem;
+}
+
+#file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.dropZone {
+  height: 100%;
+}
+
+.graphic {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  img {
+    max-width: 100%;
+  }
+  margin: 0 auto;
+  max-width: 60%;
+}
+
+.notLoggedIn {
+  font-size: 150%;
+}

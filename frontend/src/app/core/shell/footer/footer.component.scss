@@ -1,0 +1,18 @@
+@import "src/theme/theme-variables";
+
+footer {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  padding: 2em;
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  img {
+    height: 3em;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+  }
+}

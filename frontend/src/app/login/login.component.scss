@@ -1,0 +1,26 @@
+@import "src/theme/theme-variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 2em;
+}
+
+.switchRegistration {
+  padding-top: 1em;
+}
+
+.ng-invalid.ng-touched:not(form) {
+  border-left: 4px solid theme-color("danger");
+}
+
+@include media-breakpoint-down(xs) {
+  .container {
+    width: 100%;
+  }
+}

@@ -1,0 +1,30 @@
+.teams {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.team {
+  height: 3rem;
+  line-height: 3rem;
+  width: 10rem;
+  border-style: dashed;
+  border-width: 1px;
+  border-color: black;
+  background-color: rgb(248, 217, 217);
+  display: inline-block;
+  position: relative;
+  margin: 0.25rem 0.25rem 0.25rem 0.25rem;
+
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+}
+
+.delivered {
+  border-style: solid;
+  background-color: rgb(217, 248, 217);
+}

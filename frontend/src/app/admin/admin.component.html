@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="jumbotron text-center">
+    <h2>Registrasjonskode: {{locationInfo.registrationCode}}</h2>
+    <h2>Innleveringsfrist: {{ tidIgjen }}</h2>
+    <div class="teams">
+      <div *ngFor="let team of teams" class="team" [class.delivered]="team.delivery">
+        <span>{{team.teamName}}</span>
+      </div>
+    </div>
+    <div class="download">
+      <button class="btn btn-primary" (click)="download()">Last ned roboter</button>
+    </div>
+  </div>
+</div>

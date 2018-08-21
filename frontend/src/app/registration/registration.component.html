@@ -1,0 +1,55 @@
+<div class="login-container bg-light">
+  <div class="login-box">
+    <h1>NC Robocode 2018</h1>
+    <div>
+      <h6 class="d-inline-block">v{{version}}</h6>
+    </div>
+    <div class="container">
+      <div class="card col-md-6 mt-3 mx-auto">
+        <div class="card-body">
+          <form (ngSubmit)="register()" [formGroup]="registrationForm" novalidate>
+            <div class="alert alert-danger" [hidden]="!error || isLoading" translate>
+              {{error}}
+            </div>
+            <div class="form-group">
+              <label class="d-block">
+                <input type="text" class="form-control" formControlName="registrationCode"
+                       [placeholder]="'Registrasjonskode' | translate"/>
+                <span hidden translate>Registrasjonskode</span>
+                <small [hidden]="registrationForm.controls.registrationCode.valid || registrationForm.controls.registrationCode.untouched"
+                       class="text-danger" translate>
+                  Registrasjonskode er et påkrevd
+                </small>
+              </label>
+              <label class="d-block">
+                <input type="text" class="form-control" formControlName="teamName"
+                       [placeholder]="'Lag- eller brukernavn'"/>
+                <span hidden translate>Lag- eller brukernavn</span>
+                <small [hidden]="registrationForm.controls.teamName.valid || registrationForm.controls.teamName.untouched"
+                       class="text-danger" translate>
+                  Lagnavn/brukernavn er påkrevd
+                </small>
+              </label>
+              <label class="d-block">
+                <input type="password" class="form-control" formControlName="password"
+                       [placeholder]="'Passord'" required/>
+                <span hidden translate>Passord</span>
+                <small [hidden]="registrationForm.controls.password.valid || registrationForm.controls.password.untouched"
+                       class="text-danger" translate>
+                  Passord er påkrevd
+                </small>
+              </label>
+            </div>
+            <button class="btn btn-primary w-100" type="submit" [disabled]="registrationForm.invalid || isLoading">
+              <i class="fa fa-cog fa-spin" [hidden]="!isLoading"></i>
+              <span translate>Registrer</span>
+            </button>
+          </form>
+          <div class="switchLogin">
+              <a routerLink="/login" routerLinkActive="active">Gå til login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
