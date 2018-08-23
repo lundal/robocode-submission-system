@@ -1,21 +1,21 @@
 <div class="container-fluid">
   <div class="jumbotron text-center">
     <div class="graphic">
-        <img src="assets/ntnuvuio.png" />
+        <img src="assets/uioescape2018.png" />
     </div>
     <!--<app-loader [isLoading]="isLoading"></app-loader>-->
     <div *ngIf="loggedIn">
-      <div id="uploadDrop" 
+      <div id="uploadDrop"
           class="uploadDiv"
           [class.onDrop]="isDragging"
           (dragenter)="dragEnter($event)"
           (dragleave)="dragLeave($event)"
           (drop)="onDrop($event)"
           (dragover)="onDragOver($event)">
-          <!--<input class="box__file" 
-                 type="file" 
-                 name="file" 
-                 id="file" 
+          <!--<input class="box__file"
+                 type="file"
+                 name="file"
+                 id="file"
                  (change)="fileChange($event)" />
           <label for="file">Choose a file or drag it here</label>-->
           Drag and drop your robot here
@@ -24,7 +24,7 @@
     <div *ngIf="!loggedIn" class="notLoggedIn">
       For å laste opp din robot må du enten
       <a routerLink="/registration" routerLinkActive="active">registrere deg</a>
-      eller 
+      eller
       <a routerLink="/login" routerLinkActive="active">logge inn</a>
     </div>
     <div class="deliveries" *ngIf="deliveries">
