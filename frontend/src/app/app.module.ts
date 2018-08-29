@@ -15,6 +15,7 @@ import { MuligheterModule } from './muligheter/muligheter.module';
 import { OmOssModule } from './om-oss/om-oss.module';
 import { LoginModule } from './login/login.module';
 import { RegistrationModule } from './registration/registration.module';
+import { ReglerModule } from './regler/regler.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -42,6 +43,7 @@ import { MomentModule } from 'angular2-moment';
     AboutModule,
     LoginModule,
     RegistrationModule,
+    ReglerModule,
     MuligheterModule,
     OmOssModule,
     AdminModule,
