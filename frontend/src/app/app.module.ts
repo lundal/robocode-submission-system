@@ -11,6 +11,7 @@ import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
+import { MuligheterModule } from './muligheter/muligheter.module';
 import { OmOssModule } from './om-oss/om-oss.module';
 import { LoginModule } from './login/login.module';
 import { RegistrationModule } from './registration/registration.module';
@@ -41,6 +42,7 @@ import { MomentModule } from 'angular2-moment';
     AboutModule,
     LoginModule,
     RegistrationModule,
+    MuligheterModule,
     OmOssModule,
     AdminModule,
     MomentModule,
