@@ -127,11 +127,16 @@ class DeliveryService(private val userBean: UserBean,
     }
 
     private fun checkFileContainsRobot(path: Path) {
-        val lines = readManifist(path)
-        val robot = lines.any { line -> line.startsWith("robots:") }
-        if (!robot) {
+        if (getRobotName(path) == null) {
             throw FileUploadException("No robot found in jar file")
         }
+    }
+
+    private fun getRobotName(path: Path): String? {
+        return readManifist(path)
+                .filter { line -> line.startsWith("robots:") }
+                .map { line -> line.replaceFirst("robots:", "").trim() }
+                .firstOrNull { line -> line.isNotEmpty() }
     }
 
     private fun readManifist(path: Path): List<String> {
@@ -161,7 +166,7 @@ class DeliveryService(private val userBean: UserBean,
                 Files.createDirectories(dir)
             }
 
-            val internal = zipfs.getPath("$locationName/${it.filename}")
+            val internal = zipfs.getPath("$locationName/${getRobotName(external)} (${it.teamName}).jar")
             Files.copy(external.toAbsolutePath(), internal.toAbsolutePath(), StandardCopyOption.REPLACE_EXISTING)
         }
 

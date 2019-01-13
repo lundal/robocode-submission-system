@@ -6,4 +6,5 @@ import java.time.LocalDateTime
 data class Delivery(val id: Long,
                     @JsonSerialize(using = LocalDateTimeSerializer::class) val created: LocalDateTime,
                     val filename: String,
-                    val teamId: Long)
+                    val teamId: Long,
+                    val teamName: String)

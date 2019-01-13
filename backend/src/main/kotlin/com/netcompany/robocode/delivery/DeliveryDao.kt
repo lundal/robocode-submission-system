@@ -47,12 +47,13 @@ class DeliveryDao(private val namedTemplate: NamedParameterJdbcTemplate) {
                         rs.getLong("id"),
                         rs.getTimestamp("created").toLocalDateTime(),
                         rs.getString("filename"),
-                        rs.getLong("team_id"))
+                        rs.getLong("team_id"),
+                        "TODO")
             }
 
     fun getAllDeliveriesForLocation(locationId: Long) =
             namedTemplate.query("" +
-                    "SELECT d.id, d.created, d.filename, d.team_id " +
+                    "SELECT d.id, d.created, d.filename, d.team_id, t.title as team_name " +
                     "FROM delivery d " +
                     "JOIN team t ON t.id = d.team_id " +
                     "WHERE t.location_id = :locationId AND d.created = (SELECT max(created) FROM delivery WHERE team_id = t.id)" +
@@ -64,6 +65,7 @@ class DeliveryDao(private val namedTemplate: NamedParameterJdbcTemplate) {
                         rs.getLong("id"),
                         rs.getTimestamp("created").toLocalDateTime(),
                         rs.getString("filename"),
-                        rs.getLong("team_id"))
+                        rs.getLong("team_id"),
+                        rs.getString("team_name"))
             }
 }
