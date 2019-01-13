@@ -6,7 +6,7 @@ CREATE TABLE location (
 );
 
 insert into location(title, registration_code, deadline)
-values ('uio', 'uio2018', (TIMESTAMP '2018-08-30 20:00:00'));
+values ('escape', 'escape2019', (TIMESTAMP '2019-01-24 20:00:00'));
 
 CREATE TABLE administrator (
     id serial primary key,
@@ -17,7 +17,7 @@ CREATE TABLE administrator (
 );
 
 insert into administrator(title, password, superuser, location_id)
-values ('admin', '$2a$10$CpfkIWlSNzE1GyNZj.2VIe9GZI1Y.Q5bMH6CovPD2YJ5NENmlu/i.', true, (select id from location where title = 'uio'));
+values ('admin', '$2a$10$CpfkIWlSNzE1GyNZj.2VIe9GZI1Y.Q5bMH6CovPD2YJ5NENmlu/i.', true, (select id from location where title = 'escape'));
 
 CREATE TABLE team (
     id serial primary key,
