@@ -9,12 +9,12 @@ q {
 }
 
 .uploadDiv {
-  padding-top: 2em;
-  max-width: 70%;
-  height: 10em;
+  display: block;
+  cursor: pointer;
+  padding: 3em;
+  max-width: 60%;
   margin: 0 auto;
   background-color: lightgray;
-
   outline: 2px dashed black;
   outline-offset: -10px;
 }
@@ -28,12 +28,7 @@ q {
 }
 
 #file {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
+  display: none;
 }
 
 .dropZone {
@@ -43,9 +38,11 @@ q {
 .graphic {
   padding-top: 1em;
   padding-bottom: 1em;
+
   img {
     max-width: 100%;
   }
+
   margin: 0 auto;
   max-width: 60%;
 }
