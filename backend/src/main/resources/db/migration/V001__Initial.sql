@@ -6,7 +6,7 @@ CREATE TABLE location (
 );
 
 insert into location(title, registration_code, deadline)
-values ('escape', 'escape2019', (TIMESTAMP '2019-01-24 20:00:00'));
+values ('escape', 'escape2019', (TIMESTAMP '2019-01-24 19:30:00'));
 
 CREATE TABLE administrator (
     id serial primary key,
