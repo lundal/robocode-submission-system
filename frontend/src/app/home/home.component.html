@@ -25,7 +25,7 @@
     <div class="deliveries" *ngIf="deliveries">
       <h2>Dine innleveringer</h2>
       <div *ngFor="let delivery of deliveries">
-        {{delivery.created | amTimeAgo}} - {{delivery.filename}}
+        {{ delivery.created | amTimeAgo}} - {{delivery.filename}}
       </div>
     </div>
   </div>

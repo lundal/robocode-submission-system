@@ -2,11 +2,11 @@ CREATE TABLE location (
     id serial primary key,
     title varchar(30) unique not null,
     registration_code varchar(50) unique not null,
-    deadline timestamp not null
+    deadline bigint not null
 );
 
 insert into location(title, registration_code, deadline)
-values ('escape', 'escape2019', (TIMESTAMP '2019-01-24 19:30:00'));
+values ('escape', 'escape2019', 1548354600000);
 
 CREATE TABLE administrator (
     id serial primary key,
@@ -29,7 +29,7 @@ CREATE TABLE team (
 
 CREATE TABLE delivery (
     id serial primary key,
-    created timestamp not null,
+    created bigint not null,
     filename varchar(100) not null,
     team_id bigint not null references team(id)
 )

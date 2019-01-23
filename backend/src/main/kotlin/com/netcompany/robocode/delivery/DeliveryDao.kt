@@ -4,7 +4,6 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.jdbc.support.GeneratedKeyHolder
 import org.springframework.stereotype.Repository
-import java.time.LocalDateTime
 import java.util.*
 
 @Repository
@@ -20,7 +19,7 @@ class DeliveryDao(private val namedTemplate: NamedParameterJdbcTemplate) {
                 "(created, filename, team_id) " +
                 "VALUES (:created, :filename, :teamId)",
                 MapSqlParameterSource()
-                        .addValue("created", LocalDateTime.now())
+                        .addValue("created", System.currentTimeMillis())
                         .addValue("filename", filename)
                         .addValue("teamId", teamId),
                 keyHolder,
@@ -45,7 +44,7 @@ class DeliveryDao(private val namedTemplate: NamedParameterJdbcTemplate) {
             { rs, _ ->
                 Delivery(
                         rs.getLong("id"),
-                        rs.getTimestamp("created").toLocalDateTime(),
+                        rs.getLong("created"),
                         rs.getString("filename"),
                         rs.getLong("team_id"),
                         "TODO")
@@ -63,7 +62,7 @@ class DeliveryDao(private val namedTemplate: NamedParameterJdbcTemplate) {
             { rs, _ ->
                 Delivery(
                         rs.getLong("id"),
-                        rs.getTimestamp("created").toLocalDateTime(),
+                        rs.getLong("created"),
                         rs.getString("filename"),
                         rs.getLong("team_id"),
                         rs.getString("team_name"))

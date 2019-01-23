@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service
 import java.io.InputStream
 import java.net.URI
 import java.nio.file.*
-import java.time.LocalDateTime
 
 @Service
 class DeliveryService(private val userBean: UserBean,
@@ -16,6 +15,7 @@ class DeliveryService(private val userBean: UserBean,
                       @Value("\${uploadPath}") private val uploadPath: String) {
     val TEN_MB: Long = 10 * 1024 * 1024
     val BUFFER_SIZE = 10 * 1024
+    val DEADLINE_SLACK = 5 * 60 * 1000 // 5 minutes in ms
 
     init {
         val uploadPath = Paths.get(uploadPath)
@@ -50,7 +50,7 @@ class DeliveryService(private val userBean: UserBean,
     private fun checkDeadline() {
         val locationName = userBean.claims?.get("location") as String
         val location = locationDao.getLocationByName(locationName)!!
-        if (LocalDateTime.now() > location.deadline) {
+        if (System.currentTimeMillis() > location.deadline + DEADLINE_SLACK) {
             throw FileUploadException("Delivery deadline has passed")
         }
     }

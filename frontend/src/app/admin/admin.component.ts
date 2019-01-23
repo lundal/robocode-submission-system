@@ -70,7 +70,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       this.tidSub = timer(500, 500);
       this.tidSub.subscribe(() => {
         const now = Date.now();
-        const then = Date.parse(this.locationInfo.deadline);
+        const then = this.locationInfo.deadline;
         if ((then - now) < 0) {
           this.tidIgjen = 'UTLØPT!';
           this.tidSub.unsubscribe();

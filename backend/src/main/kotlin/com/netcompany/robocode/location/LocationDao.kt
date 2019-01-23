@@ -16,7 +16,7 @@ class LocationDao(private val namedTemplate: NamedParameterJdbcTemplate) {
                 Location(rs.getLong("id"),
                         rs.getString("title"),
                         rs.getString("registration_code"),
-                        rs.getTimestamp("deadline").toLocalDateTime())
+                        rs.getLong("deadline"))
             }.getOrNull(0)
 
     fun getLocationByName(locationName: String) =
@@ -29,6 +29,6 @@ class LocationDao(private val namedTemplate: NamedParameterJdbcTemplate) {
                 Location(rs.getLong("id"),
                         rs.getString("title"),
                         rs.getString("registration_code"),
-                        rs.getTimestamp("deadline").toLocalDateTime())
+                        rs.getLong("deadline"))
             }.getOrNull(0)
 }
