@@ -2,6 +2,7 @@ package com.netcompany.robocode.delivery
 
 import com.netcompany.robocode.auth.UserBean
 import com.netcompany.robocode.location.LocationDao
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import java.io.InputStream
@@ -13,6 +14,9 @@ class DeliveryService(private val userBean: UserBean,
                       private val deliveryDao: DeliveryDao,
                       private val locationDao: LocationDao,
                       @Value("\${uploadPath}") private val uploadPath: String) {
+
+    private val log = LoggerFactory.getLogger(javaClass)
+
     val TEN_MB: Long = 10 * 1024 * 1024
     val BUFFER_SIZE = 10 * 1024
     val DEADLINE_SLACK = 5 * 60 * 1000 // 5 minutes in ms
@@ -146,7 +150,7 @@ class DeliveryService(private val userBean: UserBean,
                 val manifestPath = zipfs.getPath("/META-INF/MANIFEST.MF")
                 return Files.readAllLines(manifestPath)
             }
-        } catch (e: Exception) {
+        } catch (e: Throwable) { // Catch filesystem Errors in addition to Exceptions
             throw FileUploadException("Invalid jar file")
         }
     }
@@ -166,8 +170,12 @@ class DeliveryService(private val userBean: UserBean,
                 Files.createDirectories(dir)
             }
 
-            val internal = zipfs.getPath("$locationName/${getRobotName(external)} (${it.teamName}).jar")
-            Files.copy(external.toAbsolutePath(), internal.toAbsolutePath(), StandardCopyOption.REPLACE_EXISTING)
+            try {
+                val internal = zipfs.getPath("$locationName/${getRobotName(external)} (${it.teamName}).jar")
+                Files.copy(external.toAbsolutePath(), internal.toAbsolutePath(), StandardCopyOption.REPLACE_EXISTING)
+            } catch (e: Exception) {
+                log.warn("Skipping invalid file {}", external)
+            }
         }
 
         zipfs.close()
